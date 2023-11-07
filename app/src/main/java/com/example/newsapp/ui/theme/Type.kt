@@ -16,7 +16,6 @@ val Poppins = FontFamily(
     )
 )
 
-
 val Typography = Typography(
     displaySmall = TextStyle(
         fontSize = 24.sp,
