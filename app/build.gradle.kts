@@ -5,12 +5,13 @@ plugins {
 
 android {
     namespace = "com.example.newsapp"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.newsapp"
         minSdk = 24
-        targetSdk = 33
+        //noinspection EditedTargetSdkVersion
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -70,5 +71,7 @@ dependencies {
     //Splash api
     implementation("androidx.core:core-splashscreen:1.0.1")
 
+    //Compose Foundation
+    implementation("androidx.compose.foundation:foundation:1.5.4")
 
 }
