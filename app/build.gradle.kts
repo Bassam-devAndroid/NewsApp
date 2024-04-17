@@ -2,7 +2,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id ("kotlin-kapt")
+    kotlin("kapt")
     id ("com.google.dagger.hilt.android")
 }
 
@@ -81,7 +81,7 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:1.5.4")
 
     //Dagger Hilt
-    implementation("com.google.dagger:hilt-android:2.44")
+    implementation("com.google.dagger:hilt-android:2.49")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
 
     //Retrofit
@@ -99,6 +99,11 @@ dependencies {
 
     //Accompanist
     implementation ("com.google.accompanist:accompanist-systemuicontroller:0.31.4-beta")
+
+    //Navigation
+    implementation ("androidx.navigation:navigation-compose:2.7.7")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
+
 
 }
 
