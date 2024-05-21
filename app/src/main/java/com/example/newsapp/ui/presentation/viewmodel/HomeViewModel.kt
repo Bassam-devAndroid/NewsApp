@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.newsapp.ui.domain.usecases.AppEntryUseCases
+import com.example.newsapp.ui.domain.usecases.app_entry.AppEntryUseCases
 import com.example.newsapp.ui.presentation.navigation.Route
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -28,12 +28,13 @@ class HomeViewModel @Inject constructor(
         appEntryUseCases.loadAppEntryUseCase().onEach {
             if (it) {
                 startDestination = Route.NewsNavigation.route
-            }
-            else{
+            } else {
                 startDestination = Route.AppStartNavigation.route
             }
             delay(300)
             splashConditionScreen = false
         }.launchIn(viewModelScope)
     }
+
+
 }
