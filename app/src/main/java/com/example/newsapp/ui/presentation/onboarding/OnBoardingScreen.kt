@@ -19,8 +19,9 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.newsapp.ui.presentation.common.NewsButton
+import com.example.newsapp.ui.presentation.common.NewsTextButton
 import com.example.newsapp.ui.presentation.viewmodel.OnBoardingEvent
-import com.example.newsapp.ui.presentation.viewmodel.OnBoardingViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)

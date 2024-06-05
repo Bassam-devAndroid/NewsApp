@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.newsapp.ui.domain.manager.LocalUserManager
+import com.example.newsapp.ui.util.Constants
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -26,8 +27,8 @@ class LocalUserManagerImpl(
     }
 }
 
-private val Context.dataStore : DataStore<Preferences> by preferencesDataStore(name = "USER_SETTINGS")
+private val Context.dataStore : DataStore<Preferences> by preferencesDataStore(name = Constants.USER_SETTINGS)
 
 private object PreferencesKeys{
-    val appEntry = booleanPreferencesKey(name = "APP_Entry")
+    val appEntry = booleanPreferencesKey(name = Constants.APP_Entry)
 }
