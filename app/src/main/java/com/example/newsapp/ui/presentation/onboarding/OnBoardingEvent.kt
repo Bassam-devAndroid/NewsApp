@@ -1,4 +1,4 @@
-package com.example.newsapp.ui.presentation.viewmodel
+package com.example.newsapp.ui.presentation.onboarding
 
 sealed class OnBoardingEvent{
 

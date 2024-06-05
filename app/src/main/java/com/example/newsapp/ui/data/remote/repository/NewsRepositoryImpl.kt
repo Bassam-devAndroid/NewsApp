@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.newsapp.ui.data.remote.NewsApi
 import com.example.newsapp.ui.data.remote.NewsPagingSource
+import com.example.newsapp.ui.data.remote.SearchNewsPagingSource
 import com.example.newsapp.ui.domain.models.Article
 import com.example.newsapp.ui.domain.repository.NewsRepository
 import kotlinx.coroutines.flow.Flow
@@ -22,5 +23,18 @@ class NewsRepositoryImpl(
                )
            }
        ).flow
+    }
+
+    override fun searchNews(searchQuery: String, sources: List<String>): Flow<PagingData<Article>> {
+        return Pager(
+            config = PagingConfig(pageSize = 10),
+            pagingSourceFactory = {
+                SearchNewsPagingSource(
+                    searchQuery = searchQuery,
+                    newsApi = newsApi,
+                    sources = sources.joinToString(separator = ",")
+                )
+            }
+        ).flow
     }
 }
