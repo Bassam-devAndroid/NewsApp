@@ -3,6 +3,7 @@ package com.example.newsapp.di
 import android.app.Application
 import androidx.room.Room
 import com.example.newsapp.data.LocalUserManagerImpl
+import com.example.newsapp.data.local.NewsDao
 import com.example.newsapp.data.local.NewsDataBase
 import com.example.newsapp.data.local.NewsTypeConverter
 import com.example.newsapp.domain.manager.LocalUserManager
@@ -12,9 +13,12 @@ import com.example.newsapp.domain.repository.NewsRepository
 import com.example.newsapp.domain.usecases.app_entry.AppEntryUseCases
 import com.example.newsapp.domain.usecases.app_entry.LoadAppEntryUseCase
 import com.example.newsapp.domain.usecases.app_entry.SaveAppEntryUseCase
+import com.example.newsapp.domain.usecases.news.DeleteArticleUseCase
+import com.example.newsapp.domain.usecases.news.GetArticlesUseCase
 import com.example.newsapp.domain.usecases.news.GetNews
 import com.example.newsapp.domain.usecases.news.NewsUseCases
 import com.example.newsapp.domain.usecases.news.SearchNewsUseCase
+import com.example.newsapp.domain.usecases.news.UpsertUseCase
 import com.example.newsapp.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -69,11 +73,15 @@ object AppModule {
     @Provides
     @Singleton
     fun provideNewsUseCases(
-        newsRepository: NewsRepository
+        newsRepository: NewsRepository,
+        newsDao: NewsDao
     ): NewsUseCases{
         return NewsUseCases(
             getNews = GetNews(newsRepository),
-            searchNews = SearchNewsUseCase(newsRepository)
+            searchNews = SearchNewsUseCase(newsRepository),
+            getArticlesUseCase = GetArticlesUseCase(newsDao),
+            upsertUseCase = UpsertUseCase(newsDao),
+            deleteArticleUseCase = DeleteArticleUseCase(newsDao)
         )
     }
 
