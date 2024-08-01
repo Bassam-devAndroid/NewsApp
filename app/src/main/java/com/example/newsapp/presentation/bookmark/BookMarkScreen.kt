@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import com.example.newsapp.R
+import com.example.newsapp.domain.models.Article
 import com.example.newsapp.ui.presentation.common.ArticlesList
 import com.example.newsapp.ui.presentation.navigation.Route
 import com.loc.newsapp.presentation.Dimens.MediumPadding1
@@ -20,7 +21,7 @@ import com.loc.newsapp.presentation.Dimens.MediumPadding1
 @Composable
 fun BookMarkScreen(
     state: BookMarkState,
-    navigate: (String) -> Unit
+    navigate: (Article) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -36,7 +37,7 @@ fun BookMarkScreen(
 
         Spacer(modifier = Modifier.height(MediumPadding1))
 
-        ArticlesList(articles = state.articles, onArticleClick = { navigate(Route.DetailsScreen.route) })
+        ArticlesList(articles = state.articles, onArticleClick = { navigate(it) })
 
     }
 

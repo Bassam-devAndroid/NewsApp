@@ -27,14 +27,12 @@ fun ArticlesList(
         verticalArrangement = Arrangement.spacedBy(MediumPadding1),
         contentPadding = PaddingValues(all = ExtraSmallPadding2)
     ) {
-        items(count = articles.size) { article ->
-            articles[article]?.let {
+        items(count = articles.size) {
+            val article = articles[it]
                 ArticleCard(
-                    article = it,
-                    onClick = { onArticleClick(it) }
+                    article = article,
+                    onClick = { onArticleClick(article) }
                 )
-            }
-
         }
     }
 }

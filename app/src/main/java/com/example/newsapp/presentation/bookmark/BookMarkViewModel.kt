@@ -1,6 +1,8 @@
 package com.example.newsapp.presentation.bookmark
 
 
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.example.newsapp.domain.usecases.news.NewsUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,8 +16,8 @@ class BookMarkViewModel @Inject constructor(
     private val newsUseCases: NewsUseCases
 ): ViewModel(){
 
-    private val _state = MutableStateFlow(BookMarkState())
-    val state: StateFlow<BookMarkState> = _state
+    private val _state = mutableStateOf(BookMarkState())
+    val state: State<BookMarkState> = _state
 
     init {
         getArticles()
@@ -23,7 +25,7 @@ class BookMarkViewModel @Inject constructor(
 
     private fun getArticles() {
         newsUseCases.getArticlesUseCase().onEach {
-            _state.value = _state.value.copy(articles = it)
+            _state.value = _state.value.copy(articles = it.asReversed())
         }
     }
 }

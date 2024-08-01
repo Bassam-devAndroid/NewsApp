@@ -26,12 +26,11 @@ import com.example.newsapp.R
 import com.example.newsapp.domain.models.Article
 import com.example.newsapp.ui.presentation.common.ArticlesList
 import com.example.newsapp.ui.presentation.common.SearchBar
-import com.example.newsapp.ui.presentation.navigation.Route
 import com.loc.newsapp.presentation.Dimens.MediumPadding1
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun HomeScreen(articles: LazyPagingItems<Article>,navigate: (String) -> Unit){
+fun HomeScreen(articles: LazyPagingItems<Article>,navigateToSearch: () -> Unit, navigateToDetails: (Article) -> Unit) {
     val titles by remember {
         derivedStateOf {
             if (articles.itemCount > 10){
@@ -64,7 +63,7 @@ fun HomeScreen(articles: LazyPagingItems<Article>,navigate: (String) -> Unit){
             text = "",
             readOnly = true,
             onValueChange = {},
-            onClick = {navigate(Route.SearchScreen.route)},
+            onClick = {navigateToSearch()},
             onSearch = {},
         )
 
@@ -85,7 +84,7 @@ fun HomeScreen(articles: LazyPagingItems<Article>,navigate: (String) -> Unit){
             modifier = Modifier.padding(horizontal = MediumPadding1),
             articles = articles,
             onArticleClick = {
-                navigate(Route.DetailsScreen.route)
+               navigateToDetails(it)
             },
         )
     }

@@ -1,9 +1,10 @@
 package com.example.newsapp.domain.usecases.news
 
-import com.example.newsapp.data.local.NewsDao
+
+import com.example.newsapp.domain.repository.NewsRepository
 
 class GetArticlesUseCase(
-    private val newsDao: NewsDao
+    private val newsRepository: NewsRepository
 ) {
-    operator fun invoke() = newsDao.getArticles()
+    operator fun invoke() = newsRepository.getAllArticles()
 }
